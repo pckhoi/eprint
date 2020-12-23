@@ -24,8 +24,7 @@ proc.on('message', (m) => {
   if (m.type === 'print') {
     console.log(m.str)
   } else if (m.type === 'error') {
-    console.log(m.errMsg)
-    // console.log(m.err.stack)
+    console.log(m.errStack)
     kill()
   }
 })

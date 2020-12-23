@@ -1,6 +1,6 @@
 {
   "name": "eprint",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Run your script in Electron and print to terminal",
   "scripts": {
     "build": "rm -rf dist && tsc && chmod +x dist/cli.js",
