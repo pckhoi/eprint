@@ -1,0 +1,30 @@
+{
+  "name": "eprint",
+  "version": "0.1.0",
+  "description": "Run your script in Electron and print to terminal",
+  "scripts": {
+    "build": "rm -rf dist && tsc && chmod +x dist/cli.js",
+    "test": "npm run build && node ./dist/cli.js ./test/renderer.js"
+  },
+  "author": "Khoi Pham <pckhoi@gmail.com>",
+  "repository": "github:pckhoi/eprint",
+  "bin": "./dist/cli.js",
+  "license": "MIT",
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "prepublish": "npm run build",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.10.1",
+    "@typescript-eslint/parser": "^3.10.1",
+    "eslint": "^7.16.0",
+    "prettier": "^2.2.1",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "electron": "^9.3.1",
+    "electron-unhandled": "^3.0.2"
+  }
+}
