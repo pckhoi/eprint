@@ -46,6 +46,12 @@ You'll probably want to add a script to `package.json` for convenience.
   }
 ```
 
+If you want to open developer tools for debugging, add `--debug` flag:
+
+```bash
+npm run build && npx eprint --debug dist/my-script.js
+```
+
 ## Reference
 
 ### eprint

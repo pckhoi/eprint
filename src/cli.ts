@@ -5,15 +5,28 @@ import { spawn } from 'child_process'
 
 import * as electron from 'electron'
 
-const userScript = path.join(
-  process.cwd(),
-  process.argv[process.argv.length - 1]
-)
+const [flags, argv] = (() => {
+  const flags = []
+  const argv = []
+  for (let arg of process.argv) {
+    if (arg.startsWith('--')) {
+      flags.push(arg)
+    } else {
+      argv.push(arg)
+    }
+  }
+  return [flags, argv]
+})()
+
+const debugging = flags.indexOf('--debug') !== -1
+
+const userScript = path.join(process.cwd(), argv[argv.length - 1])
 const mainScript = path.join(__dirname, './main.js')
 const args = [mainScript, userScript]
 const proc = spawn(electron as any, args, {
   stdio: ['ipc'],
   env: {
+    EPRINT_DEBUGGING: debugging ? 'true' : 'false',
     ...process.env,
     CONCURRENCY: '1',
   },

@@ -6,6 +6,8 @@ import * as unhandled from 'electron-unhandled'
 
 let anticipateFatalErr = false
 
+const debugging = process.env.EPRINT_DEBUGGING === 'true'
+
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -39,6 +41,10 @@ function createWindow() {
     app.quit()
     event.returnValue = 'done'
   })
+
+  if (debugging) {
+    mainWindow.webContents.openDevTools({ mode: 'detach' })
+  }
 
   // load user script
   const scriptPath = process.argv[process.argv.length - 1]
